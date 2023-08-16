@@ -1,16 +1,17 @@
+'use strict';
 const { Cardapio } = require("./Cardapio");
 
-class CaixaLanchonete {
+class CaixaDaLanchonete {
   constructor() {
     this.cardapio = new Cardapio();
-  }
+  };
 
-  calcularValorCompra(formaPagamento, itens) {
+  calcularValorDaCompra(formaPagamento, itens) {
     const cardapio = this.cardapio;
     let total = 0;
 
     if (itens.length === 0) {
-      return "Não há itens no carrinho de compras!";
+      return "Não há itens no carrinho de compra!";
     }
 
     if (!["debito", "credito", "dinheiro"].includes(formaPagamento)) {
@@ -47,13 +48,13 @@ class CaixaLanchonete {
     }
 
     return `R$ ${total.toFixed(2).replace(".", ",")}`;
-  }
-}
-
-const caixa = new CaixaLanchonete();
-console.log(caixa.calcularValorCompra("dinheiro", ["chantily,1"]));
-console.log(caixa.calcularValorCompra("debito", ["cafe,1", "chantily,1"]));
-console.log(caixa.calcularValorCompra("credito", ["combo1,1", "cafe,2"]));
-console.log(caixa.calcularValorCompra("dinheiro", ["suco,3"]));
-console.log(caixa.calcularValorCompra("debito", ["salgado,3", "cafe,1", "chantily,1"]));
-console.log(caixa.calcularValorCompra("credito", ["combo1,1", "cafe,2", "salgado,3"]));
+  };
+};
+module.exports = { CaixaDaLanchonete };
+const caixa = new CaixaDaLanchonete();
+console.log(caixa.calcularValorDaCompra("dinheiro", ["chantily,1"]));
+console.log(caixa.calcularValorDaCompra("debito", ["cafe,1", "chantily,1"]));
+console.log(caixa.calcularValorDaCompra("credito", ["combo1,1", "cafe,2"]));
+console.log(caixa.calcularValorDaCompra("dinheiro", ["suco,3"]));
+console.log(caixa.calcularValorDaCompra("debito", ["salgado,3", "cafe,1", "chantily,1"]));
+console.log(caixa.calcularValorDaCompra("credito", ["combo1,1", "cafe,2", "salgado,3"]));
