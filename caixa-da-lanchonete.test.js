@@ -1,10 +1,10 @@
-import { CaixaDaLanchonete } from "./caixa-da-lanchonete.js";
+'use strict';
+const { CaixaDaLanchonete } = require("./caixa-da-lanchonete.js");
 
 describe('CaixaDaLanchonete', () => {
 
     const validaTeste = (formaDePagamento, resultadoEsperado, itens) => {
-        const resultado = new CaixaDaLanchonete()
-            .calcularValorDaCompra(formaDePagamento, itens);
+        let resultado = new CaixaDaLanchonete().calcularValorDaCompra(formaDePagamento, itens);
 
         expect(resultado.replace("\xa0", " ")).toEqual(resultadoEsperado);
     };
